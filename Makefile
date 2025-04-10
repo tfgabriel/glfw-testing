@@ -2,7 +2,7 @@
 
 CC = gcc
 
-BINPATH = /usr/local/bin/test
+BINPATH = /usr/local/bin/testing
 SRCPATH = src/
 DEP = glfw3
 

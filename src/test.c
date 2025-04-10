@@ -4,7 +4,7 @@
 int main(){
   glfwInit();
   GLFWwindow* window;
-  window = glfwCreateWindow(400, 600, "ts pmo", NULL, NULL);
+  window = glfwCreateWindow(200, 100, "ts pmo", NULL, NULL);
 
   glfwMakeContextCurrent(window);
 
