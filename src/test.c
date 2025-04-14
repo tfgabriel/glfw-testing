@@ -1,21 +1,40 @@
 #include <stdio.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-int main(){
+
+void resize(GLFWwindow* win, int width, int height){}
+
+GLFWwindow *makeWindow(const int *dim, const char *name){
+  GLFWwindow *win = glfwCreateWindow(dim[0], dim[1], name, NULL, NULL);
+
+  glfwMakeContextCurrent(win);
+  glfwSetFramebufferSizeCallback(win, resize); 
+
+  return win;
+}
+
+void initGLFW(const int *ver){
   glfwInit();
-  GLFWwindow* window;
-  window = glfwCreateWindow(200, 100, "ts pmo", NULL, NULL);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, ver[0]);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,ver[1]);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+}
 
-  glfwMakeContextCurrent(window);
+int main(){
+  const int ver[] = {3, 3};
+  const int dim[] = {800, 600};
+  const char name[] = "testingggg";
 
-  while (!glfwWindowShouldClose(window)){
-        glClear(GL_COLOR_BUFFER_BIT);
-        glfwSwapBuffers(window);
+  initGLFW(ver);
+  GLFWwindow *window = makeWindow(dim, name);
 
-        glfwPollEvents();
+
+
+  while(!glfwWindowShouldClose(window)){
+    glfwSwapBuffers(window);
+    glfwPollEvents();    
   }
-
-  glfwTerminate();
 
   return 0;
 }

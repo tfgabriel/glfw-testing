@@ -4,7 +4,6 @@ CC = gcc
 
 BINPATH = /usr/local/bin/testing
 SRCPATH = src/
-DEP = glfw3
 
 all: sigma
 sigma:
