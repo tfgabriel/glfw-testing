@@ -11,7 +11,7 @@ install:
 	@cp -f testing ${BINPATH} 
 
 compile :
-	@ ${CC} -o testing $(CCFLAGS) src/* -lglfw -lGL
+	@ ${CC} -o testing $(CCFLAGS) src/*.c -lglfw -lGL
 
 clean:
 	@sudo rm -r ${BINPATH} ./testing
