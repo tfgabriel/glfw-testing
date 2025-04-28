@@ -3,11 +3,18 @@
 CC = gcc
 
 BINPATH = /usr/local/bin/testing
-SRCPATH = src/
+INCPATH = ../dependencies/include/glad
+CCFLAGS = -I${INCPATH}
 
-all: sigma
-sigma:
-	@sudo ${CC} -o ${BINPATH} ${SRCPATH}test.c ${SRCPATH}glad.c -lglfw -lGL
+all: compile
+install: 
+	@cp -f testing ${BINPATH} 
+
+compile :
+	@ ${CC} -o -I..../include/glad testing src/* -lglfw -lGL
 
 clean:
-	@sudo rm -r ${BINPATH}
+	@sudo rm -r ${BINPATH} ./testing
+
+run: compile
+	./testing
