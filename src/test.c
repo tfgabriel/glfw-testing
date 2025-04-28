@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdbool.h>
-#include <glad.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 //these don't even matter 
@@ -12,15 +13,9 @@ typedef struct{
   float r, g, b, a;
 } Color;
 
-float abs(float x){
-  if(x>0) 
-    return x;
-  else
-    return -x;
-}
 
 bool epsEq(float a, float b){
-  return abs(a-b) < 0.00001f;
+  return fabs(a-b) < 0.00001f;
 }
 float floatMod(float a, float b){
   return a - (int32_t)(a/b) * b;
